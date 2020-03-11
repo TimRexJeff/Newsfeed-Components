@@ -89,7 +89,7 @@ const data = [
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
+
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
@@ -109,6 +109,47 @@ const data = [
 
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
+  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+function articleCreator(data) {
+  const articleDiv = document.createElement('div')
+  articleDiv.classList.add('article')
+
+  const h2Tag = document.createElement('h2')
+  h2Tag.textContent = data.title
+
+  const pDate = document.createElement('p')
+  pDate.classList.add('date')
+  pDate.textContent = data.date
+
+  const pTag1 = document.createElement('p')
+  pTag1.textContent = data.firstParagraph
+
+  const pTag2 = document.createElement('p')
+  pTag2.textContent = data.secondParagraph
+
+  const pTag3 = document.createElement('p')
+  pTag3.textContent = data.thirdParagraph
+
+  const expandButton = document.createElement('span')
+  expandButton.classList.add('expandButton')
+
+  articleDiv.appendChild(h2Tag)
+  articleDiv.appendChild(pDate)
+  articleDiv.appendChild(pTag1)
+  articleDiv.appendChild(pTag2)
+  articleDiv.appendChild(pTag3)
+  articleDiv.appendChild(expandButton)
+
+  return articleDiv
+}
+
+const articleNew = document.querySelector('.articles')
+
+data.forEach((newInfo) => {
+const div = articleCreator(newInfo)
+  articleNew.append(div)
+})
